@@ -42,4 +42,4 @@ def get_tokenized_datasets():
     tokenized_office_datasets = tokenize_data(office_datasets)
     re_adding_label_column(tokenized_baby_datasets, baby_datasets)
     re_adding_label_column(tokenized_office_datasets, office_datasets)
-    return tokenized_baby_datasets, tokenized_office_datasets
+    return baby_datasets, office_datasets, tokenized_baby_datasets, tokenized_office_datasets

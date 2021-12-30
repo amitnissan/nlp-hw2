@@ -22,3 +22,4 @@ def train(model_seq_classification, tokenized_baby_datasets):
     )
     print("starting train")
     trainer.train()
+    return trainer
