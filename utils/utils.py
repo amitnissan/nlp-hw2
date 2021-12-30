@@ -5,10 +5,11 @@ import torch
 # This files holds general utilities
 
 # GLOVE_PATH = "glove-twitter-200"
-baby_files_paths = {"unlabeled": "clean_data/baby/unlabeled.csv", "train": "clean_data/baby/train.csv",
-                    "dev": "clean_data/baby/dev.csv"}
-office_files_paths = {"unlabeled": "clean_data/baby/unlabeled.csv", "test": "clean_data/baby/test.csv",
-                      "dev": "clean_data/baby/dev.csv"}
+baby_files_paths = {"train": "clean_data/baby/train.csv",
+                    "dev": "clean_data/baby/dev.csv", "unlabeled": "clean_data/baby/unlabeled.csv"}
+office_files_paths = {"unlabeled": "clean_data/office_products/unlabeled.csv",
+                      "test": "clean_data/office_products/test.csv",
+                      "dev": "clean_data/office_products/dev.csv"}
 
 
 def set_seed(seed=42):
