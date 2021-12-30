@@ -21,5 +21,6 @@ def tokenize_data(model_name: str, datasets_dict: Dict[str,Dataset]):
                                                        fn_kwargs={"max_length": 128, "truncation": True,
                                                                   "padding": "max_length"})
         tokenized_dataset.set_format('torch')
+        # tokenized_dataset.to("cuda:0") FIXME throws an error
         tokenized_datasets_dict[dataset] = tokenized_dataset
     return tokenized_datasets_dict
