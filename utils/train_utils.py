@@ -1,6 +1,6 @@
 from transformers import TrainingArguments
 
-from utils.utils import  OUT_PATH
+from utils.utils import OUT_PATH
 
 args = TrainingArguments(output_dir=OUT_PATH, overwrite_output_dir=True, per_device_train_batch_size=32,
                          per_device_eval_batch_size=64, save_strategy='no', metric_for_best_model='dev_f1',
