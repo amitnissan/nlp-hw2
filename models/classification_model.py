@@ -2,6 +2,7 @@ from transformers import Trainer
 from sklearn.metrics import f1_score
 
 from utils.train_utils import args
+from utils.utils import set_seed
 
 
 def metric_fn(predictions):
@@ -11,6 +12,7 @@ def metric_fn(predictions):
 
 
 def train(model_seq_classification, tokenized_baby_datasets):
+    set_seed()
     trainer = Trainer(
         model=model_seq_classification,
         args=args,
