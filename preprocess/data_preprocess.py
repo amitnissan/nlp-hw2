@@ -3,6 +3,8 @@ from datasets import Dataset
 import pandas as pd
 from transformers import AutoTokenizer
 
+from utils.utils import baby_files_paths, office_files_paths, model_name
+
 
 def get_datasets_from_files(files_path: Dict[str, str]) -> Dict[str, Dataset]:
     datasets_dict = {}
@@ -13,7 +15,7 @@ def get_datasets_from_files(files_path: Dict[str, str]) -> Dict[str, Dataset]:
     return datasets_dict
 
 
-def tokenize_data(model_name: str, datasets_dict: Dict[str,Dataset]):
+def tokenize_data(datasets_dict: Dict[str, Dataset]):
     tokenized_datasets_dict = {}
     for dataset in datasets_dict:
         tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -24,3 +26,21 @@ def tokenize_data(model_name: str, datasets_dict: Dict[str,Dataset]):
         # tokenized_dataset.to("cuda:0") FIXME throws an error
         tokenized_datasets_dict[dataset] = tokenized_dataset
     return tokenized_datasets_dict
+
+
+def re_adding_label_column(tokenized_datasets, datasets):
+    for dataset_type in tokenized_datasets:
+        if dataset_type not in ('unlabeled', 'test'):
+            tokenized_datasets[dataset_type] = tokenized_datasets[dataset_type].add_column('label',
+                                                                                           datasets[dataset_type][
+                                                                                               'label'])
+
+
+def get_tokenized_datasets():
+    baby_datasets = get_datasets_from_files(baby_files_paths)
+    office_datasets = get_datasets_from_files(office_files_paths)
+    tokenized_baby_datasets = tokenize_data(baby_datasets)
+    tokenized_office_datasets = tokenize_data(office_datasets)
+    re_adding_label_column(tokenized_baby_datasets, baby_datasets)
+    re_adding_label_column(tokenized_office_datasets, office_datasets)
+    return tokenized_baby_datasets, tokenized_office_datasets
