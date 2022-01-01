@@ -1,5 +1,5 @@
 from transformers import Trainer
-from sklearn.metrics import f1_score
+from sklearn.metrics import f1_score, accuracy_score
 
 from utils.train_utils import args
 from utils.utils import set_seed
@@ -8,7 +8,7 @@ from utils.utils import set_seed
 def metric_fn(predictions):
     preds = predictions.predictions.argmax(axis=1)
     labels = predictions.label_ids
-    return {'f1': f1_score(preds, labels, average='binary')}
+    return {'f1': accuracy_score(preds, labels)}
 
 
 def train(model_seq_classification, tokenized_baby_datasets):
