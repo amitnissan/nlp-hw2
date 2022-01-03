@@ -8,7 +8,7 @@ from utils.utils import set_seed
 def metric_fn(predictions):
     preds = predictions.predictions.argmax(axis=1)
     labels = predictions.label_ids
-    return {'f1': accuracy_score(preds, labels)}
+    return {'accuracy': accuracy_score(preds, labels)}
 
 
 def train(model_seq_classification, tokenized_baby_datasets):
