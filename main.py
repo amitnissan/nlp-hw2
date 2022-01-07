@@ -2,7 +2,7 @@ from transformers import AutoModelForSequenceClassification
 
 from models.classification_model import train
 from preprocess.data_preprocess import get_tokenized_datasets
-from utils.utils import set_seed, model_name, OUT_PATH
+from utils.utils import set_seed, model_name
 
 
 def runner():
