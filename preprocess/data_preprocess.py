@@ -3,7 +3,7 @@ from datasets import Dataset
 import pandas as pd
 from transformers import AutoTokenizer
 
-from utils.utils import baby_files_paths, office_files_paths, model_name
+from utils.utils import baby_files_paths, office_files_paths, model_name, set_seed
 
 
 def get_datasets_from_files(files_path: Dict[str, str]) -> Dict[str, Dataset]:
