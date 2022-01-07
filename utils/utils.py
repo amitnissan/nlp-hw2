@@ -25,3 +25,5 @@ def set_seed(seed=42):
 model_name = 'bert-base-uncased'
 
 OUT_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'models'))
+
+competition_file_name = "comp_207108820.csv"
