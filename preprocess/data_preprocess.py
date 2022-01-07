@@ -7,6 +7,7 @@ from utils.utils import baby_files_paths, office_files_paths, model_name, set_se
 
 
 def get_datasets_from_files(files_path: Dict[str, str]) -> Dict[str, Dataset]:
+    # parse csv's (remove index column and create Dataset)
     datasets_dict = {}
     for file in files_path:
         df = pd.read_csv(files_path[file], index_col=False)
@@ -16,6 +17,7 @@ def get_datasets_from_files(files_path: Dict[str, str]) -> Dict[str, Dataset]:
 
 
 def tokenize_data(datasets_dict: Dict[str, Dataset]):
+    # use model's tokenizer to tokenize the data
     tokenized_datasets_dict = {}
     for dataset in datasets_dict:
         tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -28,6 +30,7 @@ def tokenize_data(datasets_dict: Dict[str, Dataset]):
 
 
 def re_adding_label_column(tokenized_datasets, datasets):
+    # only for train and dev csv's - get labels
     for dataset_type in tokenized_datasets:
         if dataset_type not in ('unlabeled', 'test'):
             tokenized_datasets[dataset_type] = tokenized_datasets[dataset_type].add_column('label',
@@ -36,6 +39,7 @@ def re_adding_label_column(tokenized_datasets, datasets):
 
 
 def get_tokenized_datasets():
+    # parse csv's, tokenize the data, add labels to train and dev files, return the datasets & tokenized data
     set_seed()
     baby_datasets = get_datasets_from_files(baby_files_paths)
     office_datasets = get_datasets_from_files(office_files_paths)

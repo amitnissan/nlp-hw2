@@ -10,6 +10,7 @@ from main import runner
 
 
 def main(already_trained=False):
+    # Interface for reproducing/loading the model, evaluate on office's dev and create tagged test csv for competition
     set_seed()
     print("\n ##### reproducing model ##### \n")
     if already_trained:

@@ -12,6 +12,7 @@ def metric_fn(predictions):
 
 
 def train(model_seq_classification, tokenized_baby_datasets):
+    # using the train arguments in utils.train_utils.args, fine-tuning the model for the classification problem
     set_seed()
     trainer = Trainer(
         model=model_seq_classification,
