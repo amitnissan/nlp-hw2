@@ -36,6 +36,7 @@ def re_adding_label_column(tokenized_datasets, datasets):
 
 
 def get_tokenized_datasets():
+    set_seed()
     baby_datasets = get_datasets_from_files(baby_files_paths)
     office_datasets = get_datasets_from_files(office_files_paths)
     tokenized_baby_datasets = tokenize_data(baby_datasets)
