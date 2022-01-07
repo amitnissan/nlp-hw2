@@ -22,7 +22,7 @@ def set_seed(seed=42):
     torch.backends.cudnn.benchmark = False
 
 
-model_name = 'bert-base-uncased'
+model_name = 'roberta-base'
 
 OUT_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'models'))
 
